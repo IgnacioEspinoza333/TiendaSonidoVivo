@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonido Vivo · Instrumentos y Equipos Musicales en Viña del Mar</title>
+    <meta name="description" content="Tienda especializada en guitarras, bajos, baterías, teclados, sonido y servicio técnico de instrumentos de cuerda en Viña del Mar.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Verifica que el nombre del archivo CSS coincida exactamente con el que tienes en tu carpeta -->
+    <link rel="stylesheet" href="css/estilosindex.css">
+</head>
+
+<body>
+    <div id="barra-progreso" aria-hidden="true"></div>
+
+    <header id="encabezado">
+        <div class="encabezado-contenedor">
+            <div class="marca">
+                <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
+                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+            </div>
+
+            <button id="boton-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav id="menu-principal">
+                <ul>
+                    <li><a href="index.html" class="activo">Inicio</a></li>
+                    <li><a href="productos.html">Catálogo</a></li>
+                    <li><a href="#presentacion">Nosotros</a></li>
+                    <li><a href="#taller">Reparaciones</a></li>
+                </ul>
+                <div class="menu-acciones">
+                    <a href="login.html" class="btn-secundario">Ingresar</a>
+                    <a href="registro.html" class="btn-primario">Registrarse</a>
+                    <button id="boton-tema" aria-label="Cambiar modo claro/oscuro">
+                        <span id="icono-tema" aria-hidden="true">☾</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenido">
+
+        <section id="hero" class="seccion-hero">
+            <div class="hero-contenido">
+                <span class="etiqueta-destacada">Catálogo con +340 referencias</span>
+                <h2>Tu música merece el equipamiento adecuado</h2>
+                <p>Especialistas en instrumentos musicales, amplificación y servicio técnico profesional en la Región de Valparaíso.</p>
+                <div class="hero-botones">
+                    <a href="productos.html" class="cta-principal">Ver Catálogo Completo →</a>
+                    <a href="#presentacion" class="cta-secundario">Conoce la tienda</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="presentacion" class="seccion revelar">
+            <div class="contenedor-grid">
+                <div class="texto-presentacion">
+                    <span class="etiqueta">01 · Quiénes Somos</span>
+                    <h2>11 Años impulsando el talento musical</h2>
+                    <p>Ubicados en el corazón de <strong>Viña del Mar</strong>, en <strong>Sonido Vivo</strong> nos apasiona acompañar a músicos emergentes y profesionales en la búsqueda de su sonido ideal.</p>
+                    <p>Contamos con una amplia variedad de instrumentos musicales, equipos de sonido y accesorios con más de 340 referencias en inventario continuo. Atendemos de forma cercana en nuestro showroom y realizamos envíos a todo Chile.</p>
+                    
+                    <div class="resumen-metricas">
+                        <div class="metrica">
+                            <span class="metrica-numero">+11</span>
+                            <span class="metrica-texto">Años de trayectoria</span>
+                        </div>
+                        <div class="metrica">
+                            <span class="metrica-numero">340+</span>
+                            <span class="metrica-texto">Productos disponibles</span>
+                        </div>
+                        <div class="metrica">
+                            <span class="metrica-numero">100%</span>
+                            <span class="metrica-texto">Garantía y soporte</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="imagen-presentacion">
+                    <img src="img/nosotros.jpg" alt="Fachada y equipo de Sonido Vivo en Viña del Mar">
+                </div>
+            </div>
+        </section>
+
+        <section id="categorias" class="seccion revelar">
+            <span class="etiqueta">02 · Explorar</span>
+            <h2>Categorías Principales</h2>
+            <p class="subtitulo-seccion">Encuentra los instrumentos y accesorios que estás buscando.</p>
+
+            <div class="galeria-categorias">
+                <article class="tarjeta-categoria">
+                    <img src="img/guitarras.jpg" alt="Guitarras eléctricas y acústicas">
+                    <div class="categoria-info">
+                        <h3>Guitarras y Bajos</h3>
+                        <p>Modelos eléctricos, acústicos, electroacústicos y accesorios.</p>
+                        <a href="productos.html" class="enlace-categoria">Ver productos →</a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-categoria">
+                    <img src="img/teclados.jpg" alt="Teclados">
+                    <div class="categoria-info">
+                        <h3>Teclados y Sintetizadores</h3>
+                        <p>Pianos digitales, controladores MIDI y teclados.</p>
+                        <a href="productos.html" class="enlace-categoria">Ver productos →</a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-categoria">
+                    <img src="img/baterias.jpg" alt="Baterías">
+                    <div class="categoria-info">
+                        <h3>Baterías y Percusión</h3>
+                        <p>Sets acústicos, baterías electrónicas, platillos.</p>
+                        <a href="productos.html" class="enlace-categoria">Ver productos →</a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-categoria">
+                    <img src="img/audio.jpg" alt="Audio">
+                    <div class="categoria-info">
+                        <h3>Audio y Amplificación</h3>
+                        <p>Amplificadores, micrófonos de estudio, pedales y cables.</p>
+                        <a href="productos.html" class="enlace-categoria">Ver productos →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección Taller de Reparaciones con los nuevos requerimientos -->
+        <section id="taller" class="seccion revelar">
+            <div class="contenedor-grid reves">
+                <div class="imagen-presentacion">
+                    <img src="img/taller.jpg" alt="Luthier trabajando en la reparación de una guitarra en el taller de Sonido Vivo">
+                </div>
+                
+                <div class="texto-presentacion">
+                    <span class="etiqueta">03 · Servicio Técnico</span>
+                    <h2>Taller de Reparación de Instrumentos de Cuerda</h2>
+                    <p>Ajustes, mantención y calibración profesional para guitarras eléctricas, acústicas, bajos y ukeleles.</p>
+
+                    <div class="caja-aviso">
+                        <div class="aviso-item">
+                            <span>📍</span>
+                            <p><strong>Recepción Exclusivamente Presencial:</strong> El ingreso de instrumentos se realiza de forma presencial en nuestro local en Viña del Mar. <em>No recibimos encomiendas ni envíos por Starken/Chilexpress para reparaciones.</em></p>
+                        </div>
+                        <div class="aviso-item">
+                            <span>🎸</span>
+                            <p><strong>Exclusivo Instrumentos de Cuerda:</strong> Atendemos exclusivamente guitarras, bajos y ukeleles. <em>No realizamos servicio técnico de teclados, baterías ni amplificadores.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="grid-proceso">
+                        <div class="tarjeta-proceso">
+                            <span class="icono-proceso">🔍</span>
+                            <h4>Diagnóstico Gratuito</h4>
+                            <p>Revisión inicial en mesón sin costo de evaluación.</p>
+                        </div>
+                        <div class="tarjeta-proceso">
+                            <span class="icono-proceso">⏱️</span>
+                            <h4>Entrega Estimada</h4>
+                            <p>Calibraciones estándar listas en 48 a 72 horas hábiles.</p>
+                        </div>
+                    </div>
+
+                    <ul class="lista-servicios">
+                        <li>✓ Calibración completa, octavación y ajuste de alma.</li>
+                        <li>✓ Cambio de cuerdas, rectificado, coronado y pulido de trastes.</li>
+                        <li>✓ Circuitos electrónicos, blindajes y cambio de cápsulas.</li>
+                    </ul>
+
+                    <div class="taller-acciones">
+                        <a href="https://wa.me/56900000000?text=Hola,%20necesito%20reparar%20mi%20guitarra/instrumento%20de%20cuerda.%20Quisiera%20consultar%20por%20una%20evaluación." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                            <span class="icono-ws">💬</span> Cotizar Reparación por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="video-demo" class="seccion revelar">
+            <span class="etiqueta">04 · Multimedia</span>
+            <h2>Conoce Nuestra Tienda y Sonido</h2>
+            <p class="subtitulo-seccion">Echa un vistazo a nuestras instalaciones en Viña del Mar y la prueba de nuestros equipos.</p>
+
+            <div class="contenedor-video">
+                <video controls poster="img/video-cover.jpg">
+                    <source src="img/demo-tienda.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video HTML5.
+                </video>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="pie">
+        <div class="pie-contenedor">
+            <div class="pie-columna">
+                <h3 class="pie-logo">SONIDO VIVO</h3>
+                <p>Tienda de instrumentos y equipamiento musical con atención presencial y despachos a todo Chile.</p>
+                <p><strong>Ubicación:</strong> Viña del Mar, Región de Valparaíso.</p>
+            </div>
+
+            <div class="pie-columna">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Catálogo Completo</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="registro.html">Crear Cuenta</a></li>
+                </ul>
+            </div>
+
+            <div class="pie-columna">
+                <h4>Contacto y Pedidos</h4>
+                <p>¿Eres de otra ciudad? Consulta disponibilidad y haz tu pedido:</p>
+                <p>📱 WhatsApp / Instagram</p>
+                <p>✉️ contacto@sonidovivo.cl</p>
+            </div>
+        </div>
+
+        <div class="pie-creditos">
+            <p><small>&copy; 2026 Sonido Vivo — Todos los derechos reservados.</small></p>
+        </div>
+    </footer>
+
+    <button id="boton-arriba" class="oculto" aria-label="Volver arriba">↑</button>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
