@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos · Sonido Vivo</title>
+    <meta name="description" content="Explora el catálogo completo de guitarras, teclados, baterías y equipos de audio disponibles en Sonido Vivo, Viña del Mar.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilosproductos.css">
+</head>
+
+<body>
+    <div id="barra-progreso" aria-hidden="true"></div>
+
+    <header id="encabezado">
+        <div class="encabezado-contenedor">
+            <div class="marca">
+                <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
+                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+            </div>
+
+            <button id="boton-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav id="menu-principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html" class="activo">Catálogo</a></li>
+                    <li><a href="index.html#presentacion">Nosotros</a></li>
+                    <li><a href="index.html#taller">Reparaciones</a></li>
+                </ul>
+                <div class="menu-acciones">
+                    <a href="login.html" class="btn-secundario">Ingresar</a>
+                    <a href="registro.html" class="btn-primario">Registrarse</a>
+                    <button id="boton-tema" aria-label="Cambiar modo claro/oscuro">
+                        <span id="icono-tema" aria-hidden="true">☾</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenido">
+
+        <section class="catalogo-hero">
+            <div class="contenedor-catalogo-hero">
+                <span class="etiqueta">Catálogo Sonido Vivo</span>
+                <h1>Encuentra tu próximo instrumento</h1>
+                <p>Más de 340 referencias en guitarras, teclados, baterías y equipos de audio. Filtra por categoría o busca por nombre para encontrar exactamente lo que necesitas.</p>
+            </div>
+        </section>
+
+        <section id="catalogo" aria-label="Listado de productos">
+
+            <div class="barra-herramientas">
+                <div class="barra-filtros" role="group" aria-label="Filtrar por categoría">
+                    <button class="filtro-boton activo" data-categoria="todos">Todos</button>
+                    <button class="filtro-boton" data-categoria="guitarras">Guitarras y Bajos</button>
+                    <button class="filtro-boton" data-categoria="teclados">Teclados</button>
+                    <button class="filtro-boton" data-categoria="baterias">Baterías</button>
+                    <button class="filtro-boton" data-categoria="audio">Audio y Amplificación</button>
+                </div>
+
+                <div class="buscador-productos">
+                    <span class="icono-buscar" aria-hidden="true">🔍</span>
+                    <input type="text" id="buscador-input" placeholder="Buscar producto..." aria-label="Buscar producto por nombre">
+                </div>
+            </div>
+
+            <p class="contador-resultados" id="contador-resultados">12 productos encontrados</p>
+
+            <div class="grid-productos" id="grid-productos">
+
+                <!-- Guitarras y Bajos -->
+                <article class="tarjeta-producto" data-categoria="guitarras" data-nombre="Guitarra Eléctrica Stratocaster HSS">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/guitarras.jpg" alt="Guitarra Eléctrica Stratocaster HSS">
+                        <span class="producto-categoria">Guitarras</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Guitarra Eléctrica Stratocaster HSS</h3>
+                        <p class="producto-descripcion">Cuerpo en tilo, mástil de arce y pastillas HSS. Ideal para rock y blues.</p>
+                        <p class="producto-precio">$349.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=1" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20la%20Guitarra%20Eléctrica%20Stratocaster%20HSS" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="guitarras" data-nombre="Guitarra Acústica Dreadnought">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/guitarras.jpg" alt="Guitarra Acústica Dreadnought">
+                        <span class="producto-categoria">Guitarras</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Guitarra Acústica Dreadnought</h3>
+                        <p class="producto-descripcion">Tapa de abeto macizo y aros de caoba. Sonido cálido y proyección amplia.</p>
+                        <p class="producto-precio">$189.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=2" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20la%20Guitarra%20Acústica%20Dreadnought" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="guitarras" data-nombre="Bajo Eléctrico Jazz Bass 4 Cuerdas">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/guitarras.jpg" alt="Bajo Eléctrico Jazz Bass 4 Cuerdas">
+                        <span class="producto-categoria">Bajos</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Bajo Eléctrico Jazz Bass 4 Cuerdas</h3>
+                        <p class="producto-descripcion">Doble pastilla single coil, mástil delgado y gran versatilidad tonal.</p>
+                        <p class="producto-precio">$299.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=3" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Bajo%20Eléctrico%20Jazz%20Bass" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Teclados -->
+                <article class="tarjeta-producto" data-categoria="teclados" data-nombre="Piano Digital 88 Teclas Contrapesadas">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/teclados.jpg" alt="Piano Digital 88 Teclas Contrapesadas">
+                        <span class="producto-categoria">Teclados</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Piano Digital 88 Teclas Contrapesadas</h3>
+                        <p class="producto-descripcion">Acción de martillo realista, sonidos de piano de concierto y pedal de sustain.</p>
+                        <p class="producto-precio">$459.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=4" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Piano%20Digital%2088%20Teclas" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="teclados" data-nombre="Teclado Arranger 61 Teclas">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/teclados.jpg" alt="Teclado Arranger 61 Teclas">
+                        <span class="producto-categoria">Teclados</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Teclado Arranger 61 Teclas</h3>
+                        <p class="producto-descripcion">Cientos de voces y ritmos preprogramados, ideal para práctica y presentaciones.</p>
+                        <p class="producto-precio">$259.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=5" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Teclado%20Arranger%2061%20Teclas" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="teclados" data-nombre="Controlador MIDI 49 Teclas">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/teclados.jpg" alt="Controlador MIDI 49 Teclas">
+                        <span class="producto-categoria">Teclados</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Controlador MIDI 49 Teclas</h3>
+                        <p class="producto-descripcion">Pads sensibles a la velocidad y knobs asignables, perfecto para producción musical.</p>
+                        <p class="producto-precio">$129.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=6" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Controlador%20MIDI%2049%20Teclas" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Baterías -->
+                <article class="tarjeta-producto" data-categoria="baterias" data-nombre="Batería Acústica 5 Piezas">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/baterias.jpg" alt="Batería Acústica 5 Piezas">
+                        <span class="producto-categoria">Baterías</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Batería Acústica 5 Piezas</h3>
+                        <p class="producto-descripcion">Set completo con platillos, herrajes y banco. Cáscaras de álamo para gran resonancia.</p>
+                        <p class="producto-precio">$549.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=7" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20la%20Batería%20Acústica%205%20Piezas" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="baterias" data-nombre="Batería Electrónica Compacta">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/baterias.jpg" alt="Batería Electrónica Compacta">
+                        <span class="producto-categoria">Baterías</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Batería Electrónica Compacta</h3>
+                        <p class="producto-descripcion">Módulo con más de 100 sonidos, ideal para práctica silenciosa con audífonos.</p>
+                        <p class="producto-precio">$389.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=8" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20la%20Batería%20Electrónica%20Compacta" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="baterias" data-nombre="Set de Platillos 3 Piezas">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/baterias.jpg" alt="Set de Platillos 3 Piezas">
+                        <span class="producto-categoria">Baterías</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Set de Platillos 3 Piezas</h3>
+                        <p class="producto-descripcion">Hi-hat, crash y ride en aleación de bronce B8 para un sonido brillante.</p>
+                        <p class="producto-precio">$99.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=9" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Set%20de%20Platillos%203%20Piezas" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Audio y Amplificación -->
+                <article class="tarjeta-producto" data-categoria="audio" data-nombre="Amplificador de Guitarra 40W">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/audio.jpg" alt="Amplificador de Guitarra 40W">
+                        <span class="producto-categoria">Audio</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Amplificador de Guitarra 40W</h3>
+                        <p class="producto-descripcion">Canales limpio y distorsión, reverb integrado y salida de auriculares.</p>
+                        <p class="producto-precio">$149.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=10" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Amplificador%20de%20Guitarra%2040W" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="audio" data-nombre="Micrófono de Estudio Condensador">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/audio.jpg" alt="Micrófono de Estudio Condensador">
+                        <span class="producto-categoria">Audio</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Micrófono de Estudio Condensador</h3>
+                        <p class="producto-descripcion">Patrón cardioide, ideal para grabación vocal y de instrumentos acústicos.</p>
+                        <p class="producto-precio">$79.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=11" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Micrófono%20de%20Estudio%20Condensador" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="tarjeta-producto" data-categoria="audio" data-nombre="Pedal Multiefectos">
+                    <div class="producto-imagen-contenedor">
+                        <img src="img/audio.jpg" alt="Pedal Multiefectos">
+                        <span class="producto-categoria">Audio</span>
+                    </div>
+                    <div class="producto-info">
+                        <h3>Pedal Multiefectos</h3>
+                        <p class="producto-descripcion">Más de 50 efectos, looper integrado y afinador cromático incorporado.</p>
+                        <p class="producto-precio">$119.990 <small>Precio en CLP, IVA incluido</small></p>
+                        <div class="producto-acciones">
+                            <a href="producto.html?id=12" class="btn-primario">Ver detalle</a>
+                            <a href="https://wa.me/56900000000?text=Hola,%20quiero%20consultar%20por%20el%20Pedal%20Multiefectos" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-mini" aria-label="Consultar por WhatsApp">💬</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="pie">
+        <div class="pie-contenedor">
+            <div class="pie-columna">
+                <h3 class="pie-logo">SONIDO VIVO</h3>
+                <p>Tienda de instrumentos y equipamiento musical con atención presencial y despachos a todo Chile.</p>
+                <p><strong>Ubicación:</strong> Viña del Mar, Región de Valparaíso.</p>
+            </div>
+
+            <div class="pie-columna">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Catálogo Completo</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="registro.html">Crear Cuenta</a></li>
+                </ul>
+            </div>
+
+            <div class="pie-columna">
+                <h4>Contacto y Pedidos</h4>
+                <p>¿Eres de otra ciudad? Consulta disponibilidad y haz tu pedido:</p>
+                <p>📱 WhatsApp / Instagram</p>
+                <p>✉️ contacto@sonidovivo.cl</p>
+            </div>
+        </div>
+
+        <div class="pie-creditos">
+            <p><small>&copy; 2026 Sonido Vivo — Todos los derechos reservados.</small></p>
+        </div>
+    </footer>
+
+    <button id="boton-arriba" class="oculto" aria-label="Volver arriba">↑</button>
+
+    <script src="js/scriptindex.js"></script>
+    <script src="js/scriptproductos.js"></script>
+</body>
+
+</html>
