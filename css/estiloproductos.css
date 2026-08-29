@@ -1,8 +1,8 @@
 /* ==========================================================================
    Estilos de la página de Catálogo (productos.html)
-   Reutiliza variables y componentes base de estilosindex.css
+   Se usa JUNTO a estilosindex.css (enlazado antes que este en el HTML),
+   de ahí toma las variables de color, tipografías y componentes base.
    ========================================================================== */
-@import url('estilosindex.css');
 
 /* Encabezado de la sección catálogo */
 .catalogo-hero {
@@ -106,8 +106,8 @@
     margin: 0 auto;
     padding: 1.5rem 1.5rem 4rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
 }
 
 .tarjeta-producto {
@@ -123,16 +123,25 @@
     transform: translateY(-4px);
     border-color: var(--color-primario);
 }
+
+/* Contenedor de la imagen: fondo blanco, altura fija */
 .producto-imagen-contenedor {
     position: relative;
-    height: 190px;
+    height: 220px;
+    background-color: #ffffff;
     overflow: hidden;
 }
 .producto-imagen-contenedor img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
 }
+.tarjeta-producto:hover .producto-imagen-contenedor img {
+    transform: scale(1.08);
+}
+
 .producto-categoria {
     position: absolute;
     top: 0.8rem;
@@ -145,6 +154,7 @@
     letter-spacing: 0.5px;
     padding: 0.3rem 0.7rem;
     border-radius: 20px;
+    z-index: 10;
 }
 .producto-info {
     padding: 1.2rem;
