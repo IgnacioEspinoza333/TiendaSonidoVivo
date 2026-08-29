@@ -11,8 +11,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/estilosindex.css">
-    <link rel="stylesheet" href="css/estilosproductos.css">
+    <link rel="stylesheet" href="css/estilosindex.css?v=2">
+    <link rel="stylesheet" href="css/estilosproductos.css?v=2">
+
+    <!-- Respaldo incrustado: garantiza el tamaño correcto de las imágenes
+         del catálogo aunque el navegador tenga problemas cargando el CSS externo -->
+    <style>
+        .grid-productos {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        .producto-imagen-contenedor {
+            position: relative;
+            height: 220px;
+            width: 100%;
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+        .producto-imagen-contenedor img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
@@ -81,7 +107,7 @@
                 <!-- Guitarras y Bajos -->
                 <article class="tarjeta-producto" data-categoria="guitarras" data-nombre="Guitarra Eléctrica Stratocaster HSS">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/guitarras.jpg" alt="Guitarra Eléctrica Stratocaster HSS">
+                        <img src="img/guitarra1.jpg" alt="Guitarra Eléctrica Stratocaster HSS">
                         <span class="producto-categoria">Guitarras</span>
                     </div>
                     <div class="producto-info">
@@ -113,7 +139,7 @@
 
                 <article class="tarjeta-producto" data-categoria="guitarras" data-nombre="Bajo Eléctrico Jazz Bass 4 Cuerdas">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/guitarras.jpg" alt="Bajo Eléctrico Jazz Bass 4 Cuerdas">
+                        <img src="img/guitalle2.jfif" alt="Bajo Eléctrico Jazz Bass 4 Cuerdas">
                         <span class="producto-categoria">Bajos</span>
                     </div>
                     <div class="producto-info">
@@ -146,7 +172,7 @@
 
                 <article class="tarjeta-producto" data-categoria="teclados" data-nombre="Teclado Arranger 61 Teclas">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/teclados.jpg" alt="Teclado Arranger 61 Teclas">
+                        <img src="img/piano1.jfif" alt="Teclado Arranger 61 Teclas">
                         <span class="producto-categoria">Teclados</span>
                     </div>
                     <div class="producto-info">
@@ -162,7 +188,7 @@
 
                 <article class="tarjeta-producto" data-categoria="teclados" data-nombre="Controlador MIDI 49 Teclas">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/teclados.jpg" alt="Controlador MIDI 49 Teclas">
+                        <img src="img/piano2.2.jfif" alt="Controlador MIDI 49 Teclas">
                         <span class="producto-categoria">Teclados</span>
                     </div>
                     <div class="producto-info">
@@ -179,7 +205,7 @@
                 <!-- Baterías -->
                 <article class="tarjeta-producto" data-categoria="baterias" data-nombre="Batería Acústica 5 Piezas">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/baterias.jpg" alt="Batería Acústica 5 Piezas">
+                        <img src="img/bateria1.jfif" alt="Batería Acústica 5 Piezas">
                         <span class="producto-categoria">Baterías</span>
                     </div>
                     <div class="producto-info">
@@ -195,7 +221,7 @@
 
                 <article class="tarjeta-producto" data-categoria="baterias" data-nombre="Batería Electrónica Compacta">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/baterias.jpg" alt="Batería Electrónica Compacta">
+                        <img src="img/bateria2.jfif" alt="Batería Electrónica Compacta">
                         <span class="producto-categoria">Baterías</span>
                     </div>
                     <div class="producto-info">
@@ -211,7 +237,7 @@
 
                 <article class="tarjeta-producto" data-categoria="baterias" data-nombre="Set de Platillos 3 Piezas">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/baterias.jpg" alt="Set de Platillos 3 Piezas">
+                        <img src="img/platos.jfif" alt="Set de Platillos 3 Piezas">
                         <span class="producto-categoria">Baterías</span>
                     </div>
                     <div class="producto-info">
@@ -228,7 +254,7 @@
                 <!-- Audio y Amplificación -->
                 <article class="tarjeta-producto" data-categoria="audio" data-nombre="Amplificador de Guitarra 40W">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/audio.jpg" alt="Amplificador de Guitarra 40W">
+                        <img src="img/caja1.1.jfif" alt="Amplificador de Guitarra 40W">
                         <span class="producto-categoria">Audio</span>
                     </div>
                     <div class="producto-info">
@@ -244,7 +270,7 @@
 
                 <article class="tarjeta-producto" data-categoria="audio" data-nombre="Micrófono de Estudio Condensador">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/audio.jpg" alt="Micrófono de Estudio Condensador">
+                        <img src="img/micro2.jfif" alt="Micrófono de Estudio Condensador">
                         <span class="producto-categoria">Audio</span>
                     </div>
                     <div class="producto-info">
@@ -260,7 +286,7 @@
 
                 <article class="tarjeta-producto" data-categoria="audio" data-nombre="Pedal Multiefectos">
                     <div class="producto-imagen-contenedor">
-                        <img src="img/audio.jpg" alt="Pedal Multiefectos">
+                        <img src="img/pedal.jfif" alt="Pedal Multiefectos">
                         <span class="producto-categoria">Audio</span>
                     </div>
                     <div class="producto-info">
