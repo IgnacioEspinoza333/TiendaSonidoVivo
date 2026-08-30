@@ -12,11 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/estilosindex.css?v=2">
-    <link rel="stylesheet" href="css/estilosproductos.css?v=2">
+    <link rel="stylesheet" href="css/estilosproductos.css?v=3"> <!-- Actualicé la versión a v=3 para forzar la carga del nuevo CSS -->
 
-    <!-- Respaldo incrustado: garantiza el tamaño correcto de las imágenes
-         del catálogo aunque el navegador tenga problemas cargando el CSS externo -->
+    <!-- Respaldo incrustado de imágenes -->
     <style>
+        /* --- Estilos de Respaldo Originales --- */
         .grid-productos {
             max-width: 1200px;
             margin: 0 auto;
@@ -37,6 +37,127 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* --- NUEVOS ESTILOS FORZADOS (Hero, Filtros y Buscador) --- */
+        .catalogo-hero {
+            position: relative;
+            /* Usa la ruta directa a tu imagen de la carpeta img/ */
+            background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)), 
+                        url('img/musica.jfif') center/cover no-repeat;
+            border-bottom: 1px solid #333333;
+            padding: 5rem 1.5rem 3.5rem;
+            text-align: center;
+        }
+
+        .contenedor-catalogo-hero {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .etiqueta {
+            color: #e50914;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .catalogo-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .descripcion-hero {
+            color: #aaaaaa;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        .barra-herramientas-integrada {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .barra-filtros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .filtro-boton {
+            background-color: transparent;
+            border: 1px solid #444;
+            color: #ddd;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px; 
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filtro-boton:hover {
+            border-color: #e50914;
+            color: #e50914;
+            background-color: rgba(229, 9, 20, 0.05);
+        }
+
+        .filtro-boton.activo {
+            background-color: #e50914;
+            border-color: #e50914;
+            color: #ffffff;
+        }
+
+        .buscador-productos {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .buscador-productos input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border-radius: 50px;
+            border: 1px solid #444;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .buscador-productos input:focus {
+            outline: none;
+            border-color: #e50914;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .buscador-productos .icono-buscar {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            opacity: 0.6;
+            color: #aaaaaa;
+        }
+
+        .contador-resultados {
+            margin-top: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -75,33 +196,34 @@
 
     <main id="contenido">
 
+        <!-- SECCIÓN MEJORADA: Hero + Filtros + Buscador -->
         <section class="catalogo-hero">
             <div class="contenedor-catalogo-hero">
                 <span class="etiqueta">Catálogo Sonido Vivo</span>
                 <h1>Encuentra tu próximo instrumento</h1>
-                <p>Más de 340 referencias en guitarras, teclados, baterías y equipos de audio. Filtra por categoría o busca por nombre para encontrar exactamente lo que necesitas.</p>
+                <p class="descripcion-hero">Más de 340 referencias en guitarras, teclados, baterías y equipos de audio. Filtra por categoría o busca por nombre para encontrar exactamente lo que necesitas.</p>
+                
+                <div class="barra-herramientas-integrada">
+                    <div class="barra-filtros" role="group" aria-label="Filtrar por categoría">
+                        <button class="filtro-boton activo" data-categoria="todos">Todos</button>
+                        <button class="filtro-boton" data-categoria="guitarras">Guitarras y Bajos</button>
+                        <button class="filtro-boton" data-categoria="teclados">Teclados</button>
+                        <button class="filtro-boton" data-categoria="baterias">Baterías</button>
+                        <button class="filtro-boton" data-categoria="audio">Audio y Amplificación</button>
+                    </div>
+
+                    <div class="buscador-productos">
+                        <span class="icono-buscar" aria-hidden="true">🔍</span>
+                        <input type="text" id="buscador-input" placeholder="Buscar producto..." aria-label="Buscar producto por nombre">
+                    </div>
+                </div>
+                
+                <p class="contador-resultados" id="contador-resultados">12 productos encontrados</p>
             </div>
         </section>
 
+        <!-- SECCIÓN ORIGINAL: Grid de productos -->
         <section id="catalogo" aria-label="Listado de productos">
-
-            <div class="barra-herramientas">
-                <div class="barra-filtros" role="group" aria-label="Filtrar por categoría">
-                    <button class="filtro-boton activo" data-categoria="todos">Todos</button>
-                    <button class="filtro-boton" data-categoria="guitarras">Guitarras y Bajos</button>
-                    <button class="filtro-boton" data-categoria="teclados">Teclados</button>
-                    <button class="filtro-boton" data-categoria="baterias">Baterías</button>
-                    <button class="filtro-boton" data-categoria="audio">Audio y Amplificación</button>
-                </div>
-
-                <div class="buscador-productos">
-                    <span class="icono-buscar" aria-hidden="true">🔍</span>
-                    <input type="text" id="buscador-input" placeholder="Buscar producto..." aria-label="Buscar producto por nombre">
-                </div>
-            </div>
-
-            <p class="contador-resultados" id="contador-resultados">12 productos encontrados</p>
-
             <div class="grid-productos" id="grid-productos">
 
                 <!-- Guitarras y Bajos -->
