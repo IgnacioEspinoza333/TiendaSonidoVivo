@@ -19,7 +19,7 @@ Oferta: Catálogo de 340 referencias de productos y servicio de reparación de i
 
 Situación actual: Las ventas son principalmente presenciales, pero el reciente aumento de pedidos online (WhatsApp e Instagram) desde otras ciudades ha generado una sobrecarga operativa que el equipo actual no logra manejar.
 
-# Páginas: 5 (Se admiten más de 5):
+# Páginas: 5 (5 + 1 Adicional):
 
 Todas las páginas deben formar parte de un mismo sitio web. No deben desarrollarse como páginas independientes.
 
@@ -228,6 +228,14 @@ Validación de campos numéricos cuando corresponda.
 Comprobación de que las contraseñas coincidan.
 Mensajes de error comprensibles para el usuario.
 Las expresiones regulares podrán utilizarse cuando sean apropiadas para validar los datos ingresados.
+
+# 6. Página de Compra — compra.html
+
+Sin requisitos solicitados.
+
+
+Página de compra con un formulario de datos validados.
+Se accede desde el detalle de un producto.
 
 # Fecha de entrega: 6 de Septiembre
 

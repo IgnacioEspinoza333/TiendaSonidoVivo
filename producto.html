@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitarra Eléctrica Stratocaster HSS · Sonido Vivo</title>
+    <meta name="description" content="Detalle del producto Guitarra Eléctrica Stratocaster HSS en Sonido Vivo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Estilos base y de encabezado/pie -->
+    <link rel="stylesheet" href="css/estilosindex.css?v=2">
+    <!-- Estilos específicos de esta página -->
+    <link rel="stylesheet" href="css/estilosproducto.css">
+</head>
+
+<body>
+    <header id="encabezado">
+        <div class="encabezado-contenedor">
+            <div class="marca">
+                <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
+                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+            </div>
+            <nav id="menu-principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html" class="activo">Catálogo</a></li>
+                    <li><a href="index.html#presentacion">Nosotros</a></li>
+                    <li><a href="index.html#taller">Reparaciones</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenido-producto">
+        <!-- Migas de pan para fácil navegación -->
+        <div class="migas-de-pan">
+            <a href="index.html">Inicio</a> &gt; 
+            <a href="productos.html">Catálogo</a> &gt; 
+            <a href="productos.html">Guitarras</a> &gt; 
+            <span>Guitarra Eléctrica Stratocaster HSS</span>
+        </div>
+
+        <section class="detalle-producto-contenedor">
+            <!-- Columna Izquierda: Imagen Principal -->
+            <div class="galeria-producto">
+                <div class="imagen-principal">
+                    <img id="img-principal" src="img/guitarra1.jpg" alt="Guitarra Eléctrica Stratocaster HSS - Vista Principal">
+                </div>
+                <!-- Se eliminaron las miniaturas extra -->
+            </div>
+
+            <!-- Columna Derecha: Información y Acciones -->
+            <div class="info-producto">
+                <span class="categoria-etiqueta">Guitarras y Bajos</span>
+                <h2 class="titulo-producto">Guitarra Eléctrica Stratocaster HSS</h2>
+                
+                <div class="precio-contenedor">
+                    <span class="precio-actual" id="precio-unitario" data-precio="349990">$349.990</span>
+                    <span class="precio-iva">Precio con IVA incluido</span>
+                </div>
+
+                <p class="descripcion-corta">
+                    La configuración de pastillas HSS (Humbucker, Single, Single) ofrece una versatilidad inigualable, perfecta para pasar de limpios cristalinos a distorsiones potentes. Ideal para estilos desde el blues hasta el hard rock.
+                </p>
+                
+                <!-- Interacción JavaScript: Calculadora de cantidad -->
+                <div class="selector-compra">
+                    <div class="cantidad-contenedor">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" min="1" max="10" value="1" onchange="calcularTotal()">
+                    </div>
+                    <div class="total-calculado">
+                        Total: <strong id="precio-total">$349.990</strong>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="acciones-compra">
+                    <button class="btn-comprar btn-rojo" onclick="irAlPago()">Proceder al Pago</button>
+                    <button class="btn-comprar btn-verde" onclick="mostrarMensaje()">Cotizar por WhatsApp</button>
+                    <p id="mensaje-confirmacion" class="mensaje-oculto">¡Redirigiendo a WhatsApp de Sonido Vivo!</p>
+                </div>
+
+                <!-- Interacción JavaScript: Pestañas de Información -->
+                <div class="pestañas-contenedor">
+                    <div class="pestañas-botones">
+                        <button class="btn-pestaña activa" onclick="abrirPestaña(event, 'detalles')">Descripción Detallada</button>
+                        <button class="btn-pestaña" onclick="abrirPestaña(event, 'especificaciones')">Especificaciones</button>
+                    </div>
+                    
+                    <div id="detalles" class="contenido-pestaña activa">
+                        <p>Esta guitarra cuenta con un cuerpo de madera de tilo que proporciona un tono equilibrado. Su mástil de arce con perfil en "C" ofrece comodidad durante largas sesiones de práctica o presentaciones en vivo.</p>
+                    </div>
+                    
+                    <div id="especificaciones" class="contenido-pestaña">
+                        <ul>
+                            <li><strong>Cuerpo:</strong> Tilo macizo</li>
+                            <li><strong>Mástil:</strong> Arce</li>
+                            <li><strong>Diapasón:</strong> Palosanto, 22 trastes</li>
+                            <li><strong>Cápsulas:</strong> 1 Humbucker, 2 Single-Coil</li>
+                            <li><strong>Puente:</strong> Trémolo sincronizado vintage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="pie">
+        <div class="pie-creditos" style="text-align: center; padding: 2rem;">
+            <p><small>&copy; 2026 Sonido Vivo — Todos los derechos reservados.</small></p>
+        </div>
+    </footer>
+
+    <!-- Script específico de la página de producto -->
+    <script src="js/scriptproducto.js"></script>
+</body>
+</html>
