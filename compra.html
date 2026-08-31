@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra · Sonido Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos generales y específicos de la compra -->
+    <link rel="stylesheet" href="css/estilosindex.css">
+    <link rel="stylesheet" href="css/estiloscompra.css">
+</head>
+<body>
+    <header id="encabezado">
+        <div class="encabezado-contenedor">
+            <div class="marca">
+                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido-compra">
+        <div class="contenedor-checkout">
+            <!-- Resumen de compra (Izquierda) -->
+            <section class="resumen-orden">
+                <h2>Resumen de tu Orden</h2>
+                <div class="producto-resumen">
+                    <img src="img/guitarra1.jpg" alt="Guitarra HSS" width="80">
+                    <div>
+                        <h3>Guitarra Eléctrica Stratocaster HSS</h3>
+                        <p>Cantidad: <span id="resumen-cantidad">1</span></p>
+                        <p class="precio-destacado" id="resumen-total">$349.990</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Formulario de validación (Derecha) -->
+            <section class="formulario-checkout">
+                <h2>Datos de Pago</h2>
+                <form id="contacto">
+                    <div class="grupo-form">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" placeholder="Ingrese su nombre">
+                    </div>
+                    
+                    <div class="grupo-form">
+                        <label for="rut">RUT:</label>
+                        <input type="text" id="rut" placeholder="Formato 2201212121-8 (Sin puntos)">
+                    </div>
+
+                    <div class="grupo-form">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" placeholder="duocuc@gmail.com">
+                    </div>
+
+                    <div class="grupo-form">
+                        <label for="fono">Teléfono:</label>
+                        <input type="tel" id="fono" placeholder="+56912345678">
+                    </div>
+
+                    <div class="grupo-form">
+                        <label for="fenac">Fecha de nacimiento:</label>
+                        <input type="date" id="fenac">
+                    </div>
+
+                    <div class="grupo-form">
+                        <label>Forma de pago:</label>
+                        <ul class="lista-pago">
+                            <li>
+                                <input type="radio" name="fdepago" id="debito" value="1">
+                                <label for="debito">Débito</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="fdepago" id="credito" value="2">
+                                <label for="credito">Crédito</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="fdepago" id="efectivo" value="3">
+                                <label for="efectivo">Efectivo</label>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button type="submit" class="btn-pagar" id="btn-submit">Confirmar y Pagar</button>
+                    <p id="mensaje-exito" class="mensaje-oculto">¡Pago exitoso! Redirigiendo al inicio...</p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer id="pie">
+        <div class="pie-creditos" style="text-align: center; padding: 2rem;">
+            <p><small>&copy; 2026 Sonido Vivo — Todos los derechos reservados.</small></p>
+        </div>
+    </footer>
+
+    <!-- Script de validación de la compra -->
+    <script src="js/scriptcompra.js"></script>
+</body>
+</html>
