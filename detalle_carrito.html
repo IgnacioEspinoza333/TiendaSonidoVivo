@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Carrito de Compras · Sonido Vivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilosindex.css">
+    <link rel="stylesheet" href="css/estiloscompra.css">
+    <style>
+        .tabla-carrito {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        .tabla-carrito th, .tabla-carrito td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .tabla-carrito img {
+            width: 60px;
+            border-radius: 4px;
+        }
+        .acciones-carrito {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .btn-eliminar {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-secundario {
+            background-color: #6c757d;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header id="encabezado">
+        <div class="encabezado-contenedor">
+            <div class="marca">
+                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+            </div>
+            <nav id="menu-principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Catálogo</a></li>
+                    <li><a href="detalle_carrito.html" class="activo">Carrito 🛒</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenido-compra" style="padding: 2rem 5%;">
+        <h2>Tu Carrito de Compras</h2>
+        
+        <div id="carrito-vacio-msg" style="display: none; padding: 3rem 0; text-align: center;">
+            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Tu carrito está actualmente vacío.</p>
+            <a href="productos.html" class="btn-pagar" style="text-decoration: none; inline-size: fit-content; padding: 0.8rem 2rem;">Ir al Catálogo</a>
+        </div>
+
+        <div id="contenedor-carrito">
+            <table class="tabla-carrito">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Nombre</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="filas-carrito">
+                    <!-- Se llena con JavaScript -->
+                </tbody>
+            </table>
+
+            <div style="text-align: right; font-size: 1.4rem; font-weight: bold; margin-bottom: 2rem;">
+                Total a pagar: <span id="total-carrito" style="color: #c82333;">$0</span>
+            </div>
+
+            <div class="acciones-carrito">
+                <button class="btn-eliminar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+                <div>
+                    <a href="productos.html" class="btn-secundario">Seguir Comprando</a>
+                    <a href="compra.html" class="btn-pagar" style="text-decoration: none; margin-left: 10px;">Proceder al Pago</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="pie">
+        <div class="pie-creditos" style="text-align: center; padding: 2rem;">
+            <p><small>&copy; 2026 Sonido Vivo — Todos los derechos reservados.</small></p>
+        </div>
+    </footer>
+
+    <script src="js/scriptcarrito.js"></script>
+</body>
+</html>

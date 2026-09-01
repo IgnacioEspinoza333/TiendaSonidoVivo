@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finalizar Compra · Sonido Vivo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- Estilos generales y específicos de la compra -->
     <link rel="stylesheet" href="css/estilosindex.css">
     <link rel="stylesheet" href="css/estiloscompra.css">
@@ -21,16 +21,16 @@
 
     <main id="contenido-compra">
         <div class="contenedor-checkout">
-            <!-- Resumen de compra (Izquierda) -->
+            <!-- Resumen de compra dinámico desde el carrito (Izquierda) -->
             <section class="resumen-orden">
                 <h2>Resumen de tu Orden</h2>
-                <div class="producto-resumen">
-                    <img src="img/guitarra1.jpg" alt="Guitarra HSS" width="80">
-                    <div>
-                        <h3>Guitarra Eléctrica Stratocaster HSS</h3>
-                        <p>Cantidad: <span id="resumen-cantidad">1</span></p>
-                        <p class="precio-destacado" id="resumen-total">$349.990</p>
-                    </div>
+                <div id="lista-resumen-productos">
+                    <!-- Se renderiza desde JS dinámicamente -->
+                </div>
+                <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid #ddd;">
+                <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold;">
+                    <span>Total Final:</span>
+                    <span class="precio-destacado" id="resumen-total">$0</span>
                 </div>
             </section>
 
@@ -42,7 +42,7 @@
                         <label for="nombre">Nombre completo:</label>
                         <input type="text" id="nombre" placeholder="Ingrese su nombre">
                     </div>
-                    
+
                     <div class="grupo-form">
                         <label for="rut">RUT:</label>
                         <input type="text" id="rut" placeholder="Formato 2201212121-8 (Sin puntos)">
@@ -80,7 +80,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                     <button type="submit" class="btn-pagar" id="btn-submit">Confirmar y Pagar</button>
                     <p id="mensaje-exito" class="mensaje-oculto">¡Pago exitoso! Redirigiendo al inicio...</p>
                 </form>

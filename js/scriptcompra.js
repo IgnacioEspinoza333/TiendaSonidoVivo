@@ -1,20 +1,43 @@
 /* =========================================
-   1. LEER URL Y CALCULAR TOTAL
+   1. LEER CARRITO Y CALCULAR TOTAL
 ========================================= */
 document.addEventListener("DOMContentLoaded", () => {
-    // Extraemos la cantidad de la URL (ej: compra.html?cant=3)
-    const parametros = new URLSearchParams(window.location.search);
-    let cantidad = parametros.get('cant');
-    
-    // Si entran directo sin pasar por el producto, asume 1
-    if (!cantidad) cantidad = 1;
-    
-    const precioUnitario = 349990;
-    const total = cantidad * precioUnitario;
-    
-    // Mostramos en pantalla
-    document.getElementById('resumen-cantidad').innerText = cantidad;
-    document.getElementById('resumen-total').innerText = '$' + total.toLocaleString('es-CL');
+    const carrito = JSON.parse(localStorage.getItem('carritoSonidoVivo')) || [];
+    const contenedorResumen = document.getElementById('lista-resumen-productos');
+    const elemTotal = document.getElementById('resumen-total');
+
+    if (carrito.length === 0) {
+        contenedorResumen.innerHTML = "<p>No hay productos en el carrito para pagar.</p>";
+        elemTotal.innerText = "$0";
+        return;
+    }
+
+    contenedorResumen.innerHTML = "";
+    let totalGeneral = 0;
+
+    carrito.forEach(prod => {
+        const subtotal = prod.precio * prod.cantidad;
+        totalGeneral += subtotal;
+
+        const div = document.createElement('div');
+        div.classList.add('producto-resumen');
+        div.style.marginBottom = "1rem";
+        div.style.display = "flex";
+        div.style.gap = "15px";
+        div.style.alignItems = "center";
+
+        div.innerHTML = `
+            <img src="${prod.imagen}" alt="${prod.nombre}" width="60" style="border-radius:4px;">
+            <div>
+                <h4 style="margin: 0; font-size: 0.95rem;">${prod.nombre}</h4>
+                <p style="margin: 2px 0;">Cant: ${prod.cantidad} x $${prod.precio.toLocaleString('es-CL')}</p>
+                <p class="precio-destacado" style="margin: 0; font-weight: bold;">$${subtotal.toLocaleString('es-CL')}</p>
+            </div>
+        `;
+        contenedorResumen.appendChild(div);
+    });
+
+    elemTotal.innerText = '$' + totalGeneral.toLocaleString('es-CL');
 });
 
 /* =========================================
@@ -27,7 +50,6 @@ let email = document.getElementById("email");
 let fono = document.getElementById("fono");
 let fenac = document.getElementById("fenac");
 
-// Función auxiliar para borrar mensajes viejos
 function limpiarMensaje(campo) {
     let siguiente = campo.nextElementSibling;
     if (siguiente && (siguiente.classList.contains("mensaje-error") || siguiente.classList.contains("mensaje-ok"))) {
@@ -35,7 +57,6 @@ function limpiarMensaje(campo) {
     }
 }
 
-// Función para marcar campo con error
 function marcarInvalido(campo, mensaje) {
     campo.classList.add("invalido");
     campo.classList.remove("valido");
@@ -47,7 +68,6 @@ function marcarInvalido(campo, mensaje) {
     campo.insertAdjacentElement("afterend", error);
 }
 
-// Función para marcar campo correcto
 function marcarValido(campo, mensajeOk = "Correcto") {
     campo.classList.add("valido");
     campo.classList.remove("invalido");
@@ -63,10 +83,10 @@ function marcarValido(campo, mensajeOk = "Correcto") {
    3. EVENTO SUBMIT (PROCESAR COMPRA)
 ========================================= */
 formulario.addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita que la página se recargue
+    event.preventDefault();
     let esValido = true;
 
-    // A. Validación Nombre (Solo letras y espacios)
+    // A. Validación Nombre
     if (!/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/.test(nombre.value)) {
         marcarInvalido(nombre, "El nombre solo debe contener letras");
         esValido = false;
@@ -74,7 +94,7 @@ formulario.addEventListener("submit", function(event) {
         marcarValido(nombre, "Nombre válido");
     }
 
-    // B. Validación RUT (formato chileno sin puntos)
+    // B. Validación RUT
     let rutLimpio = rut.value.replace(/\./g, "").toUpperCase();
     if (!/^\d{7,8}-[0-9K]$/.test(rutLimpio)) {
         marcarInvalido(rut, "Formato de RUT inválido (ej: 18123456-0)");
@@ -83,7 +103,7 @@ formulario.addEventListener("submit", function(event) {
         marcarValido(rut, "RUT válido");
     }
 
-    // C. Validación Correo (Solo dominios permitidos)
+    // C. Validación Correo
     if (!/^[\w.+-]+@(gmail\.com|outlook\.com|duocuc\.cl)$/i.test(email.value)) {
         marcarInvalido(email, "Correo debe ser gmail.com, outlook.com o duocuc.cl");
         esValido = false;
@@ -91,7 +111,7 @@ formulario.addEventListener("submit", function(event) {
         marcarValido(email, "Correo válido");
     }
 
-    // D. Validación Teléfono (Formato +569...)
+    // D. Validación Teléfono
     if (!/^\+56\d{9}$/.test(fono.value)) {
         marcarInvalido(fono, "Formato: +56 seguido de 9 dígitos");
         esValido = false;
@@ -99,17 +119,16 @@ formulario.addEventListener("submit", function(event) {
         marcarValido(fono, "Teléfono válido");
     }
 
-    // E. Validación Edad (Mayor de 18 años)
+    // E. Validación Edad
     let hoy = new Date();
     let nacimiento = new Date(fenac.value);
     let edad = hoy.getFullYear() - nacimiento.getFullYear();
     let mes = hoy.getMonth() - nacimiento.getMonth();
-    
-    // Ajuste si aún no ha pasado el mes de cumpleaños en el año actual
+
     if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
         edad--;
     }
-    
+
     if (isNaN(edad) || edad < 18) {
         marcarInvalido(fenac, "Debes ser mayor de 18 años");
         esValido = false;
@@ -124,24 +143,23 @@ formulario.addEventListener("submit", function(event) {
         esValido = false;
     }
 
-    // G. ACCIÓN FINAL SI TODO ESTÁ CORRECTO
+    // G. ACCIÓN FINAL
     if (esValido) {
-        // Alerta nativa
         alert("¡Compra exitosa! Procesando pago...");
-        
-        // Cambiar botones visualmente
+
         const boton = document.getElementById('btn-submit');
         const mensajeExito = document.getElementById('mensaje-exito');
-        
+
         boton.style.display = 'none';
         mensajeExito.style.display = 'block';
-        
-        // Limpiar el formulario y los mensajes de validación
+
+        // Vaciar el carrito tras el pago exitoso
+        localStorage.removeItem('carritoSonidoVivo');
+
         formulario.reset();
         document.querySelectorAll(".valido, .invalido").forEach(c => c.classList.remove("valido", "invalido"));
         document.querySelectorAll(".mensaje-ok, .mensaje-error").forEach(m => m.remove());
 
-        // Redirigir a la página principal después de 3 segundos
         setTimeout(() => {
             window.location.href = "index.html";
         }, 3000);
