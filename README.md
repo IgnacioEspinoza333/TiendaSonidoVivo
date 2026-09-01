@@ -19,7 +19,7 @@ Oferta: Catálogo de 340 referencias de productos y servicio de reparación de i
 
 Situación actual: Las ventas son principalmente presenciales, pero el reciente aumento de pedidos online (WhatsApp e Instagram) desde otras ciudades ha generado una sobrecarga operativa que el equipo actual no logra manejar.
 
-# Páginas: 5 (+ 1 Adicional):
+# Páginas: 5 (+ 2 Adicional):
 
 Todas las páginas deben formar parte de un mismo sitio web. No deben desarrollarse como páginas independientes.
 
@@ -232,6 +232,9 @@ Las expresiones regulares podrán utilizarse cuando sean apropiadas para validar
 # 6. Página de Compra — compra.html
 
 Sin requisitos solicitados.
+
+
+# 7. Página del Carrito — detalle_carrito.html
 
 
 Página de compra con un formulario de datos validados.
