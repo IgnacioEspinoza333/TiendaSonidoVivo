@@ -11,39 +11,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Verifica que el nombre del archivo CSS coincida exactamente con el que tienes en tu carpeta -->
     <link rel="stylesheet" href="css/estilosindex.css">
 </head>
 
 <body>
     <div id="barra-progreso" aria-hidden="true"></div>
-
+    
     <header id="encabezado">
         <div class="encabezado-contenedor">
             <div class="marca">
-                <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
-                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+                <a href="index.html" class="logo-enlace">
+                    <img src="img/logo-tienda.jpg" alt="Logo Sonido Vivo" class="logo-img">
+                </a>
+                <div class="marca-texto">
+                    <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
+                    <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+                </div>
             </div>
-
-            <button id="boton-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
-                <span></span><span></span><span></span>
-            </button>
-
+            
             <nav id="menu-principal">
                 <ul>
-                    <li><a href="index.html" class="activo">Inicio</a></li>
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="productos.html">Catálogo</a></li>
-                    <li><a href="#presentacion">Nosotros</a></li>
-                    <li><a href="#taller">Reparaciones</a></li>
+                    <li><a href="index.html#presentacion">Nosotros</a></li>
+                    <li><a href="index.html#taller">Reparaciones</a></li>
                 </ul>
-                <div class="menu-acciones">
-                    <a href="login.html" class="btn-secundario">Ingresar</a>
-                    <a href="registro.html" class="btn-primario">Registrarse</a>
-                    <button id="boton-tema" aria-label="Cambiar modo claro/oscuro">
-                        <span id="icono-tema" aria-hidden="true">☾</span>
-                    </button>
-                </div>
             </nav>
+            
+            <!-- Contenedor de estado de sesión dinámico -->
+            <div class="menu-auth-nav">
+                <!-- Se muestra si NO ha iniciado sesión -->
+                <div id="nav-visitante" class="nav-estado-sesion">
+                    <a href="login.html" class="btn-nav-login">Ingresar</a>
+                    <a href="registro.html" class="btn-nav-registro">Registrarse</a>
+                </div>
+                
+                <!-- Se muestra si SÍ ha iniciado sesión -->
+                <div id="nav-usuario" class="nav-estado-sesion" style="display: none;">
+                    <span id="nav-nombre-usuario">Hola, Usuario</span>
+                    <a href="#" id="btn-cerrar-sesion" class="btn-nav-logout">Cerrar Sesión</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -134,7 +142,6 @@
             </div>
         </section>
 
-        <!-- Sección Taller de Reparaciones con los nuevos requerimientos -->
         <section id="taller" class="seccion revelar">
             <div class="contenedor-grid reves">
                 <div class="imagen-presentacion">
@@ -192,7 +199,7 @@
 
             <div class="contenedor-video">
                 <video controls poster="img/video-cover.jpg">
-                    <source src="img/demo-tienda.mp4" type="video/mp4">
+                    <source src="video/video_tienda.mp4" type="video/mp4">
                     Tu navegador no soporta la reproducción de video HTML5.
                 </video>
             </div>
@@ -203,7 +210,10 @@
     <footer id="pie">
         <div class="pie-contenedor">
             <div class="pie-columna">
-                <h3 class="pie-logo">SONIDO VIVO</h3>
+                <div class="pie-marca">
+                    <img src="img/logo.png" alt="Logo Sonido Vivo" class="pie-logo-img">
+                    <h3 class="pie-logo">SONIDO VIVO</h3>
+                </div>
                 <p>Tienda de instrumentos y equipamiento musical con atención presencial y despachos a todo Chile.</p>
                 <p><strong>Ubicación:</strong> Viña del Mar, Región de Valparaíso.</p>
             </div>
@@ -231,9 +241,9 @@
         </div>
     </footer>
 
-    <button id="boton-arriba" class="oculto" aria-label="Volver arriba">↑</button>
-
+    <!-- Scripts de funcionalidad -->
     <script src="js/script.js"></script>
+    <script src="js/scriptsesion.js"></script>
 </body>
 
 </html>
