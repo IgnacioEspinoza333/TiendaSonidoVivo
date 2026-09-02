@@ -1,111 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Carrito de Compras · Sonido Vivo</title>
+    <meta name="description" content="Revisa el detalle de tus productos seleccionados y procede al pago en Sonido Vivo.">
+
+    <!-- Preconexión a Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilosindex.css">
-    <link rel="stylesheet" href="css/estiloscompra.css">
-    <style>
-        .tabla-carrito {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 2rem;
-        }
-        .tabla-carrito th, .tabla-carrito td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .tabla-carrito img {
-            width: 60px;
-            border-radius: 4px;
-        }
-        .acciones-carrito {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-        }
-        .btn-eliminar {
-            background-color: #d9534f;
-            color: white;
-            border: none;
-            padding: 0.5rem 0.8rem;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn-secundario {
-            background-color: #6c757d;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-    </style>
+
+    <!-- Estilos globales y específicos -->
+    <link rel="stylesheet" href="css/estilosindex.css?v=2">
+    <link rel="stylesheet" href="css/estiloscompra.css?v=2">
 </head>
+
 <body>
+    <div id="barra-progreso" aria-hidden="true"></div>
+
+    <!-- Header Principal -->
     <header id="encabezado">
         <div class="encabezado-contenedor">
             <div class="marca">
-                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+                <a href="index.html" class="logo-enlace">
+                    <img src="img/logo-tienda.jpg" alt="Logo Sonido Vivo" class="logo-img">
+                </a>
+                <div class="marca-texto">
+                    <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
+                    <h1 class="logo-texto"><a href="index.html" class="enlace-logo-texto">SONIDO VIVO</a></h1>
+                </div>
             </div>
+
+            <button id="boton-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
+                <span></span><span></span><span></span>
+            </button>
+
             <nav id="menu-principal">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="productos.html">Catálogo</a></li>
-                    <li><a href="detalle_carrito.html" class="activo">Carrito 🛒</a></li>
+                    <li><a href="detalle_carrito.html" class="activo" aria-current="page">Carrito</a></li>
                 </ul>
+                <div class="menu-acciones">
+                    <!-- Estado 1: Usuario No Logueado -->
+                    <div id="nav-visitante" class="acciones-sesion">
+                        <a href="login.html" class="btn-secundario">Ingresar</a>
+                        <a href="registro.html" class="btn-primario">Registrarse</a>
+                    </div>
+
+                    <!-- Estado 2: Usuario Logueado -->
+                    <div id="nav-usuario" class="acciones-sesion">
+                        <span id="nav-nombre-usuario"></span>
+                        <a href="#" id="btn-cerrar-sesion" class="btn-secundario">Cerrar sesión</a>
+                    </div>
+
+                    <button id="boton-tema" aria-label="Cambiar modo claro/oscuro">
+                        <span id="icono-tema" aria-hidden="true">☾</span>
+                    </button>
+                </div>
             </nav>
         </div>
     </header>
 
-    <main id="contenido-compra" style="padding: 2rem 5%;">
+    <main id="contenido-compra">
         <h2>Tu Carrito de Compras</h2>
         
-        <div id="carrito-vacio-msg" style="display: none; padding: 3rem 0; text-align: center;">
-            <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">Tu carrito está actualmente vacío.</p>
-            <a href="productos.html" class="btn-pagar" style="text-decoration: none; inline-size: fit-content; padding: 0.8rem 2rem;">Ir al Catálogo</a>
+        <div id="carrito-vacio-msg">
+            <p class="carrito-vacio-texto">Tu carrito está actualmente vacío.</p>
+            <a href="productos.html" class="btn-primario btn-ir-catalogo">Ir al Catálogo</a>
         </div>
 
         <div id="contenedor-carrito">
-            <table class="tabla-carrito">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Nombre</th>
-                        <th>Precio Unitario</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="filas-carrito">
-                    <!-- Se llena con JavaScript -->
-                </tbody>
-            </table>
+            <div class="tabla-responsiva">
+                <table class="tabla-carrito">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Nombre</th>
+                            <th>Precio Unitario</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="filas-carrito">
+                        <!-- Se llena dinámicamente mediante JavaScript -->
+                    </tbody>
+                </table>
+            </div>
 
-            <div style="text-align: right; font-size: 1.4rem; font-weight: bold; margin-bottom: 2rem;">
-                Total a pagar: <span id="total-carrito" style="color: #c82333;">$0</span>
+            <div class="total-carrito-contenedor">
+                Total a pagar: <span id="total-carrito">$0</span>
             </div>
 
             <div class="acciones-carrito">
                 <button class="btn-eliminar" onclick="vaciarCarrito()">Vaciar Carrito</button>
                 <div>
-                    <a href="productos.html" class="btn-secundario">Seguir Comprando</a>
-                    <a href="compra.html" class="btn-pagar" style="text-decoration: none; margin-left: 10px;">Proceder al Pago</a>
+                    <a href="productos.html" class="btn-secundario-caja">Seguir Comprando</a>
+                    <a href="compra.html" class="btn-primario btn-proceder-pago">Proceder al Pago</a>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Pie de página -->
     <footer id="pie">
-        <div class="pie-creditos" style="text-align: center; padding: 2rem;">
+        <div class="pie-contenedor">
+            <div class="pie-columna">
+                <h3 class="pie-logo">SONIDO VIVO</h3>
+                <p>Tienda de instrumentos y equipamiento musical con atención presencial y despachos a todo Chile.</p>
+                <p><strong>Ubicación:</strong> Viña del Mar, Región de Valparaíso.</p>
+            </div>
+
+            <div class="pie-columna">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Catálogo Completo</a></li>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li><a href="registro.html">Crear Cuenta</a></li>
+                </ul>
+            </div>
+
+            <div class="pie-columna">
+                <h4>Contacto y Pedidos</h4>
+                <p>¿Eres de otra ciudad? Consulta disponibilidad y haz tu pedido:</p>
+                <p>📱 WhatsApp / Instagram</p>
+                <p>✉️ contacto@sonidovivo.cl</p>
+            </div>
+        </div>
+
+        <div class="pie-creditos">
             <p><small>&copy; 2026 Sonido Vivo — Todos los derechos reservados.</small></p>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="js/scriptindex.js"></script>
     <script src="js/scriptcarrito.js"></script>
+    <script src="js/scriptsesion.js"></script>
 </body>
 </html>

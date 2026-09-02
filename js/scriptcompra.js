@@ -97,7 +97,7 @@ formulario.addEventListener("submit", function(event) {
     // B. Validación RUT
     let rutLimpio = rut.value.replace(/\./g, "").toUpperCase();
     if (!/^\d{7,8}-[0-9K]$/.test(rutLimpio)) {
-        marcarInvalido(rut, "Formato de RUT inválido (ej: 18123456-0)");
+        marcarInvalido(rut, "Formato de RUT inválido (ej: 12345678-9)");
         esValido = false;
     } else {
         marcarValido(rut, "RUT válido");
