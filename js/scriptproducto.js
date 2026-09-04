@@ -1,4 +1,6 @@
-// Base de datos de los 12 productos del catálogo
+/* ============================================================
+   BASE DE DATOS DE PRODUCTOS (regla de negocio: sin cambios)
+   ============================================================ */
 const productosDB = {
     1: {
         id: 1,
@@ -187,11 +189,15 @@ const productosDB = {
 
 let productoActual = null;
 
-// Cargar dinámicamente los datos al iniciar la página
+/* Setter de texto seguro: evita repetir el patrón getElementById + null-check */
+const setTexto = (id, valor) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = valor;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id') || 1;
-
     productoActual = productosDB[id] || productosDB[1];
 
     document.title = `${productoActual.nombre} · Sonido Vivo`;
@@ -202,109 +208,82 @@ document.addEventListener('DOMContentLoaded', () => {
         imgPrincipal.alt = productoActual.nombre;
     }
 
-    const migasCat = document.getElementById('migas-categoria');
-    if (migasCat) migasCat.textContent = productoActual.categoriaSlug;
-
-    const migasNom = document.getElementById('migas-nombre');
-    if (migasNom) migasNom.textContent = productoActual.nombre;
-
-    const catEtiqueta = document.getElementById('categoria-etiqueta');
-    if (catEtiqueta) catEtiqueta.textContent = productoActual.categoria;
-
-    const titulo = document.getElementById('titulo-producto');
-    if (titulo) titulo.textContent = productoActual.nombre;
+    setTexto('migas-categoria', productoActual.categoriaSlug);
+    setTexto('migas-nombre', productoActual.nombre);
+    setTexto('categoria-etiqueta', productoActual.categoria);
+    setTexto('titulo-producto', productoActual.nombre);
+    setTexto('descripcion-corta', productoActual.descripcionCorta);
+    setTexto('detalles-texto', productoActual.detalles);
 
     const elementoPrecio = document.getElementById('precio-unitario');
     if (elementoPrecio) {
         elementoPrecio.setAttribute('data-precio', productoActual.precio);
-        elementoPrecio.textContent = '$' + productoActual.precio.toLocaleString('es-CL');
+        elementoPrecio.textContent = `$${productoActual.precio.toLocaleString('es-CL')}`;
     }
-
-    const descCorta = document.getElementById('descripcion-corta');
-    if (descCorta) descCorta.textContent = productoActual.descripcionCorta;
-
-    const detallesTexto = document.getElementById('detalles-texto');
-    if (detallesTexto) detallesTexto.textContent = productoActual.detalles;
 
     const listaEspec = document.getElementById('lista-especificaciones');
     if (listaEspec) {
-        listaEspec.innerHTML = productoActual.especificaciones.map(spec => `<li>${spec}</li>`).join('');
+        listaEspec.innerHTML = productoActual.especificaciones.map((spec) => `<li>${spec}</li>`).join('');
     }
 
     calcularTotal();
 });
 
-// Calculadora de precio local
+/* Calculadora de precio total según la cantidad seleccionada */
 function calcularTotal() {
     const cantidadInput = document.getElementById('cantidad');
     if (!cantidadInput || !productoActual) return;
-    
+
     const cantidad = parseInt(cantidadInput.value) || 1;
-    const total = cantidad * productoActual.precio;
-    
     const precioTotalElem = document.getElementById('precio-total');
     if (precioTotalElem) {
-        precioTotalElem.innerText = '$' + total.toLocaleString('es-CL');
+        precioTotalElem.textContent = `$${(cantidad * productoActual.precio).toLocaleString('es-CL')}`;
     }
 }
 
-// Guardar en localStorage
+/* Agrega (o suma cantidad a) el producto actual en el carrito guardado */
 function agregarAlCarrito() {
     const cantidad = parseInt(document.getElementById('cantidad').value) || 1;
-    let carrito = JSON.parse(localStorage.getItem('carritoSonidoVivo')) || [];
+    const carrito = JSON.parse(localStorage.getItem('carritoSonidoVivo')) || [];
+    const itemExistente = carrito.find((item) => item.id === productoActual.id);
 
-    // Comprobar si ya existe en el carrito
-    const indice = carrito.findIndex(item => item.id === productoActual.id);
-    if (indice !== -1) {
-        carrito[indice].cantidad += cantidad;
+    if (itemExistente) {
+        itemExistente.cantidad += cantidad;
     } else {
-        carrito.push({
-            id: productoActual.id,
-            nombre: productoActual.nombre,
-            precio: productoActual.precio,
-            imagen: productoActual.imagen,
-            cantidad: cantidad
-        });
+        const { id, nombre, precio, imagen } = productoActual;
+        carrito.push({ id, nombre, precio, imagen, cantidad });
     }
 
     localStorage.setItem('carritoSonidoVivo', JSON.stringify(carrito));
     alert(`¡Se agregaron ${cantidad} unidad(es) de "${productoActual.nombre}" al carrito!`);
 }
 
-// Ir directamente al carrito de compras
+/* Añade al carrito y redirige directo al carrito de compras */
 function irAlPago() {
     agregarAlCarrito();
-    window.location.href = "detalle_carrito.html";
+    window.location.href = 'detalle_carrito.html';
 }
 
-// Control de Pestañas
+/* Control de pestañas de Descripción / Especificaciones */
 function abrirPestaña(evento, idPestaña) {
-    const contenidos = document.querySelectorAll('.contenido-pestaña');
-    contenidos.forEach(contenido => contenido.classList.remove('activa'));
-    
-    const botones = document.querySelectorAll('.btn-pestaña');
-    botones.forEach(boton => boton.classList.remove('activa'));
-    
-    const pestanaObjetivo = document.getElementById(idPestaña);
-    if (pestanaObjetivo) pestanaObjetivo.classList.add('activa');
+    document.querySelectorAll('.contenido-pestaña, .btn-pestaña').forEach((el) => el.classList.remove('activa'));
+    document.getElementById(idPestaña)?.classList.add('activa');
     evento.currentTarget.classList.add('activa');
 }
 
-// Acción WhatsApp
+/* Genera el enlace de cotización por WhatsApp y lo abre */
 function mostrarMensaje() {
     const mensaje = document.getElementById('mensaje-confirmacion');
     if (mensaje) mensaje.style.display = 'block';
-    
+
     const cantidad = document.getElementById('cantidad').value;
-    const telefonoTienda = "56912345678"; 
-    
-    const textoMensaje = `Hola Sonido Vivo, me gustaría cotizar ${cantidad} unidad(es) de: ${productoActual.nombre}.`;
-    const textoCodificado = encodeURIComponent(textoMensaje);
-    
-    const linkWhatsApp = `https://wa.me/${telefonoTienda}?text=${textoCodificado}`;
-    
+    const telefonoTienda = '56912345678';
+    const texto = encodeURIComponent(
+        `Hola Sonido Vivo, me gustaría cotizar ${cantidad} unidad(es) de: ${productoActual.nombre}.`
+    );
+
     setTimeout(() => {
-        window.open(linkWhatsApp, '_blank');
+        window.open(`https://wa.me/${telefonoTienda}?text=${texto}`, '_blank');
         if (mensaje) mensaje.style.display = 'none';
     }, 1000);
 }

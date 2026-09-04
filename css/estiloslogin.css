@@ -1,6 +1,8 @@
-/* =========================================
-   Estilos de Inicio de Sesión y Registro
-========================================= */
+/* ==========================================================================
+   INICIO DE SESIÓN Y REGISTRO (login.html / registro.html)
+   ========================================================================== */
+
+/* Contenedor centrado vertical/horizontalmente para la tarjeta de login */
 #contenido-login {
     display: flex;
     justify-content: center;
@@ -9,12 +11,12 @@
     padding: 3rem 1.5rem;
     color: #e0e0e0;
 }
-
 .contenedor-auth {
     width: 100%;
     max-width: 450px;
 }
 
+/* Tarjeta con el formulario de autenticación */
 .caja-auth {
     background-color: rgba(255, 255, 255, 0.03);
     border: 1px solid #333;
@@ -22,14 +24,12 @@
     padding: 2.5rem;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
-
 .caja-auth h2 {
     color: #fff;
     font-size: 1.8rem;
     text-align: center;
     margin-bottom: 0.5rem;
 }
-
 .subtitulo-auth {
     text-align: center;
     color: #aaa;
@@ -37,20 +37,20 @@
     margin-bottom: 2rem;
 }
 
-/* Campos de Formulario */
+/* --------------------------------------------------------------------
+   Campos del Formulario
+   -------------------------------------------------------------------- */
 .grupo-form {
     margin-bottom: 1.2rem;
     display: flex;
     flex-direction: column;
 }
-
 .grupo-form label {
     margin-bottom: 0.4rem;
     font-size: 0.9rem;
     color: #ccc;
     font-weight: 600;
 }
-
 .grupo-form input[type="text"],
 .grupo-form input[type="email"],
 .grupo-form input[type="password"] {
@@ -62,14 +62,13 @@
     font-size: 0.95rem;
     transition: all 0.3s ease;
 }
-
 .grupo-form input:focus {
     outline: none;
     border-color: #e50914;
     box-shadow: 0 0 5px rgba(229, 9, 20, 0.4);
 }
 
-/* Opciones extra (Recordarme y Olvidé contraseña) */
+/* Fila de "Recordarme" y "¿Olvidaste tu contraseña?" */
 .opciones-auth {
     display: flex;
     justify-content: space-between;
@@ -78,25 +77,22 @@
     margin-bottom: 1.8rem;
     color: #aaa;
 }
-
 .recordar-usuario {
     display: flex;
     align-items: center;
     gap: 0.4rem;
     cursor: pointer;
 }
-
 .olvida-pass {
     color: #e50914;
     text-decoration: none;
     transition: color 0.2s ease;
 }
-
 .olvida-pass:hover {
     text-decoration: underline;
 }
 
-/* Botón principal */
+/* Botón principal de envío (Ingresar / Crear cuenta) */
 .btn-auth {
     width: 100%;
     background-color: #e50914;
@@ -109,12 +105,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .btn-auth:hover {
     background-color: #b80710;
 }
 
-/* Footer de la tarjeta */
+/* Pie de la tarjeta con enlace a la acción contraria (login <-> registro) */
 .pie-card-auth {
     margin-top: 2rem;
     padding-top: 1.5rem;
@@ -123,30 +118,26 @@
     font-size: 0.9rem;
     color: #aaa;
 }
-
 .pie-card-auth a {
     color: #e50914;
     font-weight: 600;
     text-decoration: none;
 }
-
 .pie-card-auth a:hover {
     text-decoration: underline;
 }
 
-/* =========================================
-   Estilos de Validación JS
-========================================= */
+/* --------------------------------------------------------------------
+   Estados de Validación (aplicados dinámicamente por JS)
+   -------------------------------------------------------------------- */
 input.invalido {
     border: 2px solid #e74c3c !important;
     background-color: rgba(231, 76, 60, 0.1) !important;
 }
-
 input.valido {
     border: 2px solid #2ecc71 !important;
     background-color: rgba(46, 204, 113, 0.1) !important;
 }
-
 .mensaje-error {
     color: #ff6b6b;
     font-weight: 600;
@@ -154,7 +145,6 @@ input.valido {
     display: block;
     margin-top: 6px;
 }
-
 .mensaje-ok {
     color: #2ecc71;
     font-weight: 600;
@@ -162,7 +152,7 @@ input.valido {
     display: block;
     margin-top: 6px;
 }
-
+/* Mensaje de éxito, oculto por defecto y mostrado vía JS */
 .mensaje-oculto {
     display: none;
     text-align: center;

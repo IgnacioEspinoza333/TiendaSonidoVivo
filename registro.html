@@ -21,8 +21,13 @@
     <header id="encabezado">
         <div class="encabezado-contenedor">
             <div class="marca">
-                <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
-                <h1 class="logo-texto"><a href="index.html" style="text-decoration: none; color: inherit;">SONIDO VIVO</a></h1>
+                <a href="index.html" class="logo-enlace">
+                    <img src="img/logo-tienda.jpg" alt="Logo Sonido Vivo" class="logo-img">
+                </a>
+                <div class="marca-texto">
+                    <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
+                    <h1 class="logo-texto"><a href="index.html">SONIDO VIVO</a></h1>
+                </div>
             </div>
             <nav id="menu-principal">
                 <ul>
@@ -32,6 +37,21 @@
                     <li><a href="index.html#taller">Reparaciones</a></li>
                 </ul>
             </nav>
+
+            <!-- Contenedor de estado de sesión dinámico -->
+            <div class="menu-auth-nav">
+                <!-- Se muestra si NO ha iniciado sesión -->
+                <div id="nav-visitante" class="nav-estado-sesion">
+                    <a href="login.html" class="btn-nav-login">Ingresar</a>
+                    <a href="registro.html" class="btn-nav-registro">Registrarse</a>
+                </div>
+
+                <!-- Se muestra si SÍ ha iniciado sesión -->
+                <div id="nav-usuario" class="nav-estado-sesion" style="display: none;">
+                    <span id="nav-nombre-usuario">Hola, Usuario</span>
+                    <a href="#" id="btn-cerrar-sesion" class="btn-nav-logout">Cerrar Sesión</a>
+                </div>
+            </div>
         </div>
     </header>
 

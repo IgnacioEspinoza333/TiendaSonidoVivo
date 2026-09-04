@@ -1,6 +1,8 @@
-/* =========================================
-   Estructura Principal del Checkout
-========================================= */
+/* ==========================================================================
+   CHECKOUT (compra.html)
+   ========================================================================== */
+
+/* Contenedor general de la página de pago */
 #contenido-compra {
     max-width: 1000px;
     margin: 3rem auto;
@@ -8,12 +10,14 @@
     color: #e0e0e0;
 }
 
+/* Layout en 2 columnas: resumen de orden + formulario de pago */
 .contenedor-checkout {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 3rem;
 }
 
+/* Título de cada bloque (Resumen de tu Orden / Datos de Pago) */
 h2 {
     color: #fff;
     border-bottom: 1px solid #333;
@@ -21,9 +25,9 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
-/* =========================================
-   Resumen de Orden (Columna Izquierda)
-========================================= */
+/* --------------------------------------------------------------------
+   Resumen de Orden (columna izquierda)
+   -------------------------------------------------------------------- */
 .producto-resumen {
     display: flex;
     gap: 1rem;
@@ -31,13 +35,12 @@ h2 {
     padding: 1rem;
     border-radius: 8px;
 }
-
 .producto-resumen img {
     object-fit: cover;
     border-radius: 4px;
-    background-color: #fff; /* Por si tiene fondo transparente */
+    background-color: #fff; /* Por si la imagen tiene fondo transparente */
 }
-
+/* Precio destacado, reutilizado en resumen y detalle de producto */
 .precio-destacado {
     color: #e50914;
     font-weight: bold;
@@ -45,22 +48,20 @@ h2 {
     margin-top: 0.5rem;
 }
 
-/* =========================================
-   Formulario (Columna Derecha)
-========================================= */
+/* --------------------------------------------------------------------
+   Formulario de Pago (columna derecha)
+   -------------------------------------------------------------------- */
 .grupo-form {
     margin-bottom: 1.2rem;
     display: flex;
     flex-direction: column;
 }
-
 .grupo-form label {
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
     color: #ccc;
     font-weight: 600;
 }
-
 .grupo-form input[type="text"],
 .grupo-form input[type="email"],
 .grupo-form input[type="tel"],
@@ -72,12 +73,12 @@ h2 {
     color: #fff;
     transition: all 0.3s ease;
 }
-
 .grupo-form input:focus {
     outline: none;
     border-color: #e50914;
 }
 
+/* Botón principal de confirmación de compra */
 .btn-pagar {
     width: 100%;
     background-color: #e50914;
@@ -91,11 +92,11 @@ h2 {
     margin-top: 1rem;
     transition: background-color 0.3s ease;
 }
-
 .btn-pagar:hover {
     background-color: #b80710;
 }
 
+/* Mensaje de éxito, oculto por defecto y mostrado vía JS tras el pago */
 .mensaje-oculto {
     display: none;
     text-align: center;
@@ -104,15 +105,16 @@ h2 {
     font-weight: bold;
 }
 
+/* En pantallas angostas, el checkout pasa a una sola columna */
 @media (max-width: 768px) {
     .contenedor-checkout {
         grid-template-columns: 1fr;
     }
 }
 
-/* =========================================
-   Estilos de Validación y Radio Buttons
-========================================= */
+/* --------------------------------------------------------------------
+   Selector de Forma de Pago (radio buttons)
+   -------------------------------------------------------------------- */
 .lista-pago {
     list-style: none;
     padding: 0;
@@ -131,7 +133,9 @@ h2 {
     font-weight: normal;
 }
 
-/* Bordes dinámicos por JS */
+/* --------------------------------------------------------------------
+   Estados de Validación de campos (aplicados dinámicamente por JS)
+   -------------------------------------------------------------------- */
 input.invalido {
     border: 2px solid #e74c3c !important;
     background-color: rgba(231, 76, 60, 0.1) !important;
@@ -141,7 +145,7 @@ input.valido {
     background-color: rgba(46, 204, 113, 0.1) !important;
 }
 
-/* Textos de mensaje inyectados por JS */
+/* Mensajes de error/éxito inyectados junto a cada campo por JS */
 .mensaje-error {
     color: #ff6b6b;
     font-weight: 600;
@@ -158,52 +162,49 @@ input.valido {
 }
 
 /* ==========================================================================
-   Estilos de la página de Carrito y Compra (css/estiloscompra.css)
+   CARRITO DE COMPRAS (detalle_carrito.html)
    ========================================================================== */
 
-/* --- Estructura Principal del Carrito --- */
+/* Contenedor general de la página de carrito */
 #contenido-compra {
     padding: 3rem 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* --- Mensaje Carrito Vacío --- */
+/* Mensaje mostrado cuando el carrito está vacío */
 #carrito-vacio-msg {
     display: none;
     padding: 3rem 0;
     text-align: center;
 }
-
 .carrito-vacio-texto {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
-
 .btn-ir-catalogo {
     text-decoration: none;
     display: inline-block;
     padding: 0.8rem 2rem;
 }
 
-/* --- Tabla de Productos --- */
+/* --------------------------------------------------------------------
+   Tabla de Productos del Carrito
+   -------------------------------------------------------------------- */
 .tabla-responsiva {
     overflow-x: auto;
 }
-
 .tabla-carrito {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 2rem;
 }
-
-.tabla-carrito th, 
+.tabla-carrito th,
 .tabla-carrito td {
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #333333;
 }
-
 .tabla-carrito img {
     width: 60px;
     height: 60px;
@@ -211,19 +212,20 @@ input.valido {
     border-radius: 4px;
 }
 
-/* --- Resumen y Total --- */
+/* Total general del carrito */
 .total-carrito-contenedor {
     text-align: right;
     font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: 2rem;
 }
-
 #total-carrito {
     color: var(--color-primario, #e50914);
 }
 
-/* --- Botones y Acciones del Carrito --- */
+/* --------------------------------------------------------------------
+   Botones y Acciones del Carrito (vaciar / seguir comprando / pagar)
+   -------------------------------------------------------------------- */
 .acciones-carrito {
     display: flex;
     justify-content: space-between;
@@ -232,7 +234,6 @@ input.valido {
     gap: 1rem;
     margin-top: 2rem;
 }
-
 .btn-eliminar {
     background-color: #d9534f;
     color: #ffffff;
@@ -242,11 +243,9 @@ input.valido {
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
-
 .btn-eliminar:hover {
     background-color: #c9302c;
 }
-
 .btn-secundario-caja {
     background-color: #444444;
     color: #ffffff;
@@ -256,30 +255,11 @@ input.valido {
     display: inline-block;
     transition: background-color 0.2s ease;
 }
-
 .btn-secundario-caja:hover {
     background-color: #555555;
 }
-
 .btn-proceder-pago {
     text-decoration: none;
     margin-left: 10px;
     display: inline-block;
-}
-
-/* --- Estilos Complementarios de Navegación y Encabezado --- */
-.enlace-logo-texto {
-    text-decoration: none;
-    color: inherit;
-}
-
-#nav-usuario {
-    display: none;
-}
-
-#nav-nombre-usuario {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-right: 0.5rem;
 }

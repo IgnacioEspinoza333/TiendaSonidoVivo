@@ -18,49 +18,40 @@
 </head>
 
 <body>
-    <div id="barra-progreso" aria-hidden="true"></div>
-
-    <!-- Header Principal -->
     <header id="encabezado">
         <div class="encabezado-contenedor">
             <div class="marca">
-                <a href="index.html" class="enlace-logo">
-                    <img src="img/logo-tienda.jpg" alt="Logo Sonido Vivo" class="logo-imagen">
-                    <div class="marca-texto">
-                        <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
-                        <h1 class="logo-texto">SONIDO VIVO</h1>
-                    </div>
+                <a href="index.html" class="logo-enlace">
+                    <img src="img/logo-tienda.jpg" alt="Logo Sonido Vivo" class="logo-img">
                 </a>
+                <div class="marca-texto">
+                    <span class="marca-subtitulo">Viña del Mar · 11 años con la música</span>
+                    <h1 class="logo-texto"><a href="index.html">SONIDO VIVO</a></h1>
+                </div>
             </div>
-
-            <button id="boton-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú de navegación">
-                <span></span><span></span><span></span>
-            </button>
-
             <nav id="menu-principal">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="productos.html" class="activo" aria-current="page">Catálogo</a></li>
+                    <li><a href="productos.html" class="activo">Catálogo</a></li>
                     <li><a href="detalle_carrito.html">Carrito</a></li>
+                    <li><a href="index.html#taller">Reparaciones</a></li>
                 </ul>
-                <div class="menu-acciones">
-                    <!-- Estado 1: Usuario No Logueado -->
-                    <div id="nav-visitante" class="acciones-sesion">
-                        <a href="login.html" class="btn-secundario">Ingresar</a>
-                        <a href="registro.html" class="btn-primario">Registrarse</a>
-                    </div>
-
-                    <!-- Estado 2: Usuario Logueado -->
-                    <div id="nav-usuario" class="acciones-sesion" style="display: none;">
-                        <span id="nav-nombre-usuario"></span>
-                        <a href="#" id="btn-cerrar-sesion" class="btn-secundario">Cerrar sesión</a>
-                    </div>
-
-                    <button id="boton-tema" aria-label="Cambiar modo claro/oscuro">
-                        <span id="icono-tema" aria-hidden="true">☾</span>
-                    </button>
-                </div>
             </nav>
+
+            <!-- Contenedor de estado de sesión dinámico -->
+            <div class="menu-auth-nav">
+                <!-- Se muestra si NO ha iniciado sesión -->
+                <div id="nav-visitante" class="nav-estado-sesion">
+                    <a href="login.html" class="btn-nav-login">Ingresar</a>
+                    <a href="registro.html" class="btn-nav-registro">Registrarse</a>
+                </div>
+
+                <!-- Se muestra si SÍ ha iniciado sesión -->
+                <div id="nav-usuario" class="nav-estado-sesion" style="display: none;">
+                    <span id="nav-nombre-usuario">Hola, Usuario</span>
+                    <a href="#" id="btn-cerrar-sesion" class="btn-nav-logout">Cerrar Sesión</a>
+                </div>
+            </div>
         </div>
     </header>
 
