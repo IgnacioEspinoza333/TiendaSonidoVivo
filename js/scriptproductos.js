@@ -1,5 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* ============================================================
+   CATÁLOGO — Filtro por categoría y búsqueda por nombre
+   ============================================================ */
 
+document.addEventListener('DOMContentLoaded', () => {
     const botonesFiltro = document.querySelectorAll('.filtro-boton');
     const tarjetas = document.querySelectorAll('.tarjeta-producto');
     const campoBusqueda = document.getElementById('buscador-input');
@@ -8,56 +11,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let categoriaActiva = 'todos';
 
-    // Crea (una sola vez) el mensaje de "sin resultados"
+    /* Mensaje de "sin resultados", creado una sola vez y reutilizado */
     const mensajeVacio = document.createElement('div');
     mensajeVacio.className = 'sin-resultados';
     mensajeVacio.innerHTML = '<span>🔎</span><p>No encontramos productos que coincidan con tu búsqueda.</p>';
     mensajeVacio.style.display = 'none';
-    if (grid) grid.appendChild(mensajeVacio);
+    grid?.appendChild(mensajeVacio);
 
     function aplicarFiltros() {
-        const texto = campoBusqueda ? campoBusqueda.value.trim().toLowerCase() : '';
-        let visibles = 0;
+        const texto = campoBusqueda?.value.trim().toLowerCase() ?? '';
 
-        tarjetas.forEach(tarjeta => {
-            const categoria = tarjeta.dataset.categoria;
-            const nombre = tarjeta.dataset.nombre.toLowerCase();
+        const visibles = [...tarjetas].filter((tarjeta) => {
+            const coincideCategoria = categoriaActiva === 'todos' || tarjeta.dataset.categoria === categoriaActiva;
+            const coincideTexto = tarjeta.dataset.nombre.toLowerCase().includes(texto);
+            const seMuestra = coincideCategoria && coincideTexto;
 
-            const coincideCategoria = categoriaActiva === 'todos' || categoria === categoriaActiva;
-            const coincideTexto = nombre.includes(texto);
-
-            if (coincideCategoria && coincideTexto) {
-                tarjeta.style.display = '';
-                visibles++;
-            } else {
-                tarjeta.style.display = 'none';
-            }
-        });
+            tarjeta.style.display = seMuestra ? '' : 'none';
+            return seMuestra;
+        }).length;
 
         mensajeVacio.style.display = visibles === 0 ? 'block' : 'none';
 
         if (contador) {
-            contador.textContent = visibles === 1
-                ? '1 producto encontrado'
-                : `${visibles} productos encontrados`;
+            contador.textContent = visibles === 1 ? '1 producto encontrado' : `${visibles} productos encontrados`;
         }
     }
 
-    // Filtro por categoría
-    botonesFiltro.forEach(boton => {
+    botonesFiltro.forEach((boton) => {
         boton.addEventListener('click', () => {
-            botonesFiltro.forEach(b => b.classList.remove('activo'));
+            botonesFiltro.forEach((b) => b.classList.remove('activo'));
             boton.classList.add('activo');
             categoriaActiva = boton.dataset.categoria;
             aplicarFiltros();
         });
     });
 
-    // Búsqueda por nombre en tiempo real
-    if (campoBusqueda) {
-        campoBusqueda.addEventListener('input', aplicarFiltros);
-    }
+    campoBusqueda?.addEventListener('input', aplicarFiltros);
 
-    // Estado inicial
-    aplicarFiltros();
+    aplicarFiltros(); // Estado inicial
 });
